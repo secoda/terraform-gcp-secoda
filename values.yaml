@@ -1,0 +1,29 @@
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.allow-http: "false"
+  tls:
+    - secretName: lb
+  hosts:
+    - host: on-premise.secoda.co
+      paths:
+        - path: /*
+          pathType: ImplementationSpecific
+
+cloudSqlAuthProxy:
+  enabled: true
+  databaseName: project:region:instance-name
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations:
+    # The binding for the service account to the GKE workload identity.
+    # This is required for the service account to be able to use SQL proxy.
+    iam.gke.io/gcp-service-account: secoda-web@secoda-web.iam.gserviceaccount.com
+
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
