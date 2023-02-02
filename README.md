@@ -40,7 +40,7 @@ terraform apply -var-file="onprem.tfvars"
 ```
 
 3. You must create a CNAME record with your DNS provider that points your your domain, i.e. `secoda.yourcompany.com` to your ingress external ip.
-4. Wait about 10 minutes. Then open `https://secoda.yourcompany.com` to test out the service. It will only listen on **HTTPS**.
+4. Wait about 10 minutes. Then open `https://secoda.yourcompany.com` to test out the service. It will only listen on **HTTPS**. Make sure you use `https://` and not `http://`.
 5. We suggest using _Cloudflare ZeroTrust_ to limit access to Secoda; optional.
 
 ## Connecting to Secoda
