@@ -43,8 +43,13 @@ Type `Yes` at the prompt.
 
 ## Connecting to Secoda
 
-- Load balancer is publicly accessible by default (DNS name is returned after running `terraform apply`). There will be a delay on first setup as the registration target happens ~5 minutes.
+- Load balancer is publicly accessible by default (IP is returned after running `terraform apply`). You will not be able to connect to the IP. The ingress will only accept connections via the `domain` name. There will be a delay on first setup as the registration target happens ~5 minutes.
 - We suggest using _Cloudflare ZeroTrust_ to limit access to Secoda.
+
+## Updating Secoda
+
+- It is configure to automatically pull the latest images on restart.
+- `kubectl rollout restart deployment secoda-web` will redeploy the application with the latest images.
 
 # Misc.
 
