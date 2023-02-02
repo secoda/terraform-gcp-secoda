@@ -12,6 +12,15 @@ resource "google_sql_database_instance" "postgres" {
   database_version = "POSTGRES_14"
 
   settings {
+    disk_autoresize = true
+    disk_autoresize_limit = 512
+
+    availability_type = "REGIONAL"
+
+    location_preference {
+      zone = "${var.region}-b"
+    }
+
     tier = "db-custom-2-3840"
     backup_configuration {
       enabled            = true
